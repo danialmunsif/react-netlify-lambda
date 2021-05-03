@@ -1,0 +1,32 @@
+@font-face {
+    font-family: 'Sebastian Bobby';
+    src: url('SebastianBobby.woff2') format('woff2'),
+        url('SebastianBobby.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sebastian Bobby Alt';
+    src: url('SebastianBobbyAlt.woff2') format('woff2'),
+        url('SebastianBobbyAlt.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sebastian Bobby Slanted';
+    src: url('SebastianBobbySlanted.woff2') format('woff2'),
+        url('SebastianBobbySlanted.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Sebastian Bobby Alt Slanted';
+    src: url('SebastianBobbyAltSlanted.woff2') format('woff2'),
+        url('SebastianBobbyAltSlanted.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

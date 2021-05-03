@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.5/jspdf.min.js"></script>
+
+    <style>
+        table {
+            font-family: arial, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td,
+        th {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #dddddd;
+        }
+
+        #content {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="content">
+        <div>Para1 <span id='span1' style="margin-left: 5px;"></span></div>
+        <img id='left-img' src="./Right.png">
+        <table>
+            <tbody id="pdfTable">
+                <tr>
+                    <th>Company</th>
+                    <th>Contact</th>
+                    <th>Country</th>
+                </tr>
+            </tbody>
+        </table>
+        <div>Para2 <span id='span2' style="margin-left: 5px;"></span></div>
+    </div>
+
+    <div>
+        <div>Para1 <input onchange="para1InputValChange()" id="para-1-input" type="text"></div>
+        <table>
+            <tr>
+                <th>Company</th>
+                <th>Contact</th>
+                <th>Country</th>
+            </tr>
+            <tr id="step-1-row">
+                <td><input type="checkbox" id='step1' onclick='checkUncheck1()'>Alfreds Futterkiste</td>
+                <td>Maria Anders</td>
+                <td>Germany</td>
+            </tr>
+            <tr id="step-2-row">
+                <td><input type="checkbox" id='step2' onclick='checkUncheck2()'>Centro comercial Moctezuma</td>
+                <td>Francisco Chang</td>
+                <td>Mexico</td>
+            </tr>
+            <tr id="step-3-row">
+                <td><input type="checkbox" id='step3' onclick='checkUncheck3()'>Ernst Handel</td>
+                <td>Roland Mendel</td>
+                <td>Austria</td>
+            </tr>
+            <tr id="step-4-row">
+                <td><input type="checkbox" id='step4' onclick='checkUncheck4()'>Island Trading</td>
+                <td>Helen Bennett</td>
+                <td>UK</td>
+            </tr>
+        </table>
+        <div>Para2 <input onchange="para2InputValChange()" id="para-2-input" type="text"></div>
+    </div>
+
+    <div id="MainHTML">
+        <h1>
+            <center>Centered HTML H1 Heading</center>
+        </h1>
+        <h2>
+            Heading 2
+        </h2>
+        <p>
+            Some text inside paragraph.
+        </p>
+        <p>
+            <img src="https://res.cloudinary.com/dmsxwwfb5/image/upload/v1580916756/buy-me-min.png">
+            <img id='left-img' src="./Right.png">
+        </p>
+    </div>
+    <!-- <div>
+        <a class="word-export" href="javascript:void(0)" onclick="ExportToDoc()">Export to Doc</a>
+    </div> -->
+
+    <button onclick="generetaPdf()">Genereta Pdf</button>
+    <button onclick="ExportToDoc()">Export to Doc</button>
+
+    <script>
+
+        function generetaPdf() {
+            var doc = new jsPDF();
+            var elementHTML = $('#content').html();
+            var imgData = 'https://res.cloudinary.com/dmsxwwfb5/image/upload/v1580916756/buy-me-min.png'
+            var specialElementHandlers = {
+                '#elementH': function (element, renderer) {
+                    return true;
+                }
+            };
+            doc.fromHTML(elementHTML, 15, 15, {
+                'width': 170,
+                'elementHandlers': specialElementHandlers
+            });
+
+            const img = document.getElementById('left-img');
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            // Set width and height
+            canvas.width = img.width;
+            canvas.height = img.height;
+            // Draw the image
+            ctx.drawImage(img, 0, 0);
+            let dataUrl = canvas.toDataURL('image/png');
+            // dataUrl = canvas.toDataURL('image/png');
+            console.log(dataUrl);
+
+            // Save the PDF
+            // doc.setFontSize(40)
+            // doc.text(35, 25, 'Paranyan loves jsPDF')
+            // doc.addImage(imgData, 'png', 15, 40, 180, 160);
+            doc.save('sample-document.pdf');
+        }
+        let pdfTable = document.getElementById('pdfTable');
+
+        function checkUncheck1() {
+            let isChecked = document.getElementById("step1").checked;
+            let tr = document.createElement('tr');
+            let rowId1 = document.createAttribute('id');
+            rowId1.value = 'rowId1';
+            tr.setAttributeNode(rowId1);
+
+            if (isChecked) {
+
+                let td1 = document.createElement('td');
+                tr.appendChild(td1);
+                txt1 = document.createTextNode('Alfreds Futterkiste');
+                td1.appendChild(txt1);
+
+                let td2 = document.createElement('td');
+                tr.appendChild(td2);
+                txt2 = document.createTextNode('Maria Anders');
+                td2.appendChild(txt2);
+
+                let td3 = document.createElement('td');
+                tr.appendChild(td3);
+                txt3 = document.createTextNode('Germany');
+                td3.appendChild(txt3);
+
+                pdfTable.appendChild(tr);
+                // console.log(pdfTable);
+            } else {
+                let row = document.getElementById('rowId1');
+                row.remove();
+                //    console.log(pdfTable)
+            }
+        }
+
+        function checkUncheck2() {
+            let isChecked = document.getElementById("step2").checked;
+            let tr = document.createElement('tr');
+            let rowId2 = document.createAttribute('id');
+            rowId2.value = 'rowId2';
+            tr.setAttributeNode(rowId2);
+
+            if (isChecked) {
+
+                let td1 = document.createElement('td');
+                tr.appendChild(td1);
+                txt1 = document.createTextNode('Centro comercial Moctezuma');
+                td1.appendChild(txt1);
+
+                let td2 = document.createElement('td');
+                tr.appendChild(td2);
+                txt2 = document.createTextNode('Francisco Chang');
+                td2.appendChild(txt2);
+
+                let td3 = document.createElement('td');
+                tr.appendChild(td3);
+                txt3 = document.createTextNode('Mexico');
+                td3.appendChild(txt3);
+
+                pdfTable.appendChild(tr);
+                // console.log(pdfTable);
+            } else {
+                let row = document.getElementById('rowId2');
+                row.remove();
+                //    console.log(pdfTable)
+            }
+        }
+
+        function checkUncheck3() {
+            let isChecked = document.getElementById("step3").checked;
+            let tr = document.createElement('tr');
+            let rowId3 = document.createAttribute('id');
+            rowId3.value = 'rowId3';
+            tr.setAttributeNode(rowId3);
+
+            if (isChecked) {
+
+                let td1 = document.createElement('td');
+                tr.appendChild(td1);
+                txt1 = document.createTextNode('Ernst Handel');
+                td1.appendChild(txt1);
+
+                let td2 = document.createElement('td');
+                tr.appendChild(td2);
+                txt2 = document.createTextNode('Roland Mendel');
+                td2.appendChild(txt2);
+
+                let td3 = document.createElement('td');
+                tr.appendChild(td3);
+                txt3 = document.createTextNode('Austria');
+                td3.appendChild(txt3);
+
+                pdfTable.appendChild(tr);
+                // console.log(pdfTable);
+            } else {
+                let row = document.getElementById('rowId3');
+                row.remove();
+                //    console.log(pdfTable)
+            }
+        }
+
+        function checkUncheck4() {
+            let isChecked = document.getElementById("step4").checked;
+            let tr = document.createElement('tr');
+            let rowId4 = document.createAttribute('id');
+            rowId4.value = 'rowId4';
+            tr.setAttributeNode(rowId4);
+
+            if (isChecked) {
+
+                let td1 = document.createElement('td');
+                tr.appendChild(td1);
+                txt1 = document.createTextNode('Island Trading');
+                td1.appendChild(txt1);
+
+                let td2 = document.createElement('td');
+                tr.appendChild(td2);
+                txt2 = document.createTextNode('Helen Bennett');
+                td2.appendChild(txt2);
+
+                let td3 = document.createElement('td');
+                tr.appendChild(td3);
+                txt3 = document.createTextNode('UK');
+                td3.appendChild(txt3);
+
+                pdfTable.appendChild(tr);
+                // console.log(pdfTable);
+            } else {
+                let row = document.getElementById('rowId4');
+                row.remove();
+                //    console.log(pdfTable)
+            }
+        }
+
+
+        function ExportToDoc(filename = '') {
+            var HtmlHead = "<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'><head><meta charset='utf-8'><title>Export HTML To Doc</title></head><body>";
+
+            var EndHtml = "</body></html>";
+
+            //complete html
+            var html = HtmlHead + document.getElementById("MainHTML").innerHTML + EndHtml;
+
+            //specify the type
+            var blob = new Blob(['\ufeff', html], {
+                type: 'application/msword'
+            });
+
+            // Specify link url
+            var url = 'data:application/vnd.ms-word;charset=utf-8,' + encodeURIComponent(html);
+
+            // Specify file name
+            filename = filename ? filename + '.doc' : 'document.doc';
+
+            // Create download link element
+            var downloadLink = document.createElement("a");
+
+            document.body.appendChild(downloadLink);
+
+            if (navigator.msSaveOrOpenBlob) {
+                navigator.msSaveOrOpenBlob(blob, filename);
+            } else {
+                // Create a link to the file
+                downloadLink.href = url;
+
+                // Setting the file name
+                downloadLink.download = filename;
+
+                //triggering the function
+                downloadLink.click();
+            }
+
+            document.body.removeChild(downloadLink);
+        }
+
+        function para1InputValChange() {
+            let val = document.getElementById('para-1-input').value;
+            let span = document.getElementById('span1');
+            span.innerHTML = val;
+        }
+
+        function para2InputValChange() {
+            let val = document.getElementById('para-2-input').value;
+            let span = document.getElementById('span2');
+            span.innerHTML = val;
+        }
+    </script>
+</body>
+
+</html>
