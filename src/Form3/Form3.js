@@ -740,7 +740,6 @@ class Form3 extends React.Component {
       axios
         .post("/.netlify/functions/thirdForm", data)
         .then(result => {
-          actions.resetForm();
           actions.setSubmitting(false);
           console.log("RESULT 2", result);
           toast.success("Email has been sent successfully.", {
