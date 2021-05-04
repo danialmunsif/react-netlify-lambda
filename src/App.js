@@ -1,5 +1,5 @@
 import { Route, BrowserRouter as Router } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 import Home from "./Home/Home";
 import Form1 from "./Form1/Form1";
