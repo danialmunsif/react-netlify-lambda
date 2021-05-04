@@ -866,9 +866,12 @@ class Form4 extends React.Component {
           });
         })
         .catch(error => {
+          let msg = "An Error occurred. Please contact admin";
+          if (error?.response?.data?.error?.response) {
+            msg = error.response.data.error.response;
+          }
           actions.setSubmitting(false);
-          console.error("error", error);
-          toast.error("An Error occurred. Please contact admin", {
+          toast.error(msg, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,

@@ -938,13 +938,7 @@ class Form1 extends React.Component {
   //     document.body.removeChild(downloadLink);
 
   // }
-  // sendEmail = () => {
-  //   console.log("this.state", this.state);
-  //   // create an api to send this state data to server.
-  //   // send axios request to that api end point
-  //   //
-  //   debugger;
-  // };
+
   exportPdf = () => {
     // if (!this.state.brokerName) {
     //     this.setState({ brokerNameEmpty: true })
@@ -1565,9 +1559,13 @@ class Form1 extends React.Component {
           });
         })
         .catch(error => {
-          console.error("error", error);
+          let msg = "An Error occurred. Please contact admin";
+          if (error?.response?.data?.error?.response) {
+            msg = error.response.data.error.response;
+          }
+
           actions.setSubmitting(false);
-          toast.error("An Error occurred. Please contact admin", {
+          toast.error(msg, {
             position: "top-right",
             autoClose: 5000,
             hideProgressBar: false,
