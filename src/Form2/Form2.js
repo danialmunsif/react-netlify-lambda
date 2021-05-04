@@ -1623,7 +1623,7 @@ class Form2 extends React.Component {
                           <p>{errors.brokerName}</p>
                         )}
                         <input
-                          value={brokerName}
+                          value={values.brokerName}
                           // style={this.state.brokerNameEmpty ? { borderColor: 'red', } : null}
                           name='brokerName'
                           onBlur={handleBlur}
@@ -1648,7 +1648,7 @@ class Form2 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={brokerPhone}
+                          value={values.brokerPhone}
                           // style={this.state.brokerPhoneEmpty ? { borderColor: 'red', } : null}
                           name='brokerPhone'
                           onBlur={handleBlur}
@@ -1673,7 +1673,7 @@ class Form2 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={brokerEmail}
+                          value={values.brokerEmail}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='brokerEmail'
                           onBlur={handleBlur}
@@ -1739,7 +1739,7 @@ class Form2 extends React.Component {
                           )}
                         </p>
                         <input
-                          value={client1Name}
+                          value={values.client1Name}
                           // style={this.state.client1NameEmpty ? { borderColor: 'red', } : null}
                           name='client1Name'
                           onBlur={handleBlur}
@@ -1759,7 +1759,7 @@ class Form2 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={client1Phone}
+                          value={values.client1Phone}
                           // style={this.state.client1PhoneEmpty ? { borderColor: 'red', } : null}
                           name='client1Phone'
                           onBlur={handleBlur}
@@ -1779,7 +1779,7 @@ class Form2 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={client1Email}
+                          value={values.client1Email}
                           // style={this.state.client1EmailEmpty ? { borderColor: 'red', } : null}
                           name='client1Email'
                           onBlur={handleBlur}
@@ -1819,7 +1819,7 @@ class Form2 extends React.Component {
                       <div className='form-input-cont' style={{ margin: 0 }}>
                         <label className='pure-material-textfield-outlined'>
                           <input
-                            value={client2Name}
+                            value={values.client2Name}
                             name='client2Name'
                             onBlur={handleBlur}
                             onChange={event => {
@@ -1832,7 +1832,7 @@ class Form2 extends React.Component {
                         </label>
                         <label className='pure-material-textfield-outlined'>
                           <input
-                            value={client2Phone}
+                            value={values.client2Phone}
                             name='client2Phone'
                             onBlur={handleBlur}
                             onChange={event => {
@@ -1845,7 +1845,7 @@ class Form2 extends React.Component {
                         </label>
                         <label className='pure-material-textfield-outlined'>
                           <input
-                            value={client2Email}
+                            value={values.client2Email}
                             name='client2Email'
                             onBlur={handleBlur}
                             onChange={event => {
@@ -1864,7 +1864,7 @@ class Form2 extends React.Component {
                     <div className='form-input-cont' style={{ margin: 0 }}>
                       <label className='pure-material-textfield-outlined textarea-field'>
                         <input
-                          value={yourObjective}
+                          value={values.yourObjective}
                           name='yourObjective'
                           onBlur={handleBlur}
                           onChange={event => {
@@ -1884,7 +1884,7 @@ class Form2 extends React.Component {
                     <div className='form-input-cont' style={{ margin: 0 }}>
                       <label className='pure-material-textfield-outlined textarea-field'>
                         <input
-                          value={challengeRightNow}
+                          value={values.challengeRightNow}
                           name='challengeRightNow'
                           onBlur={handleBlur}
                           onChange={event => {
@@ -2098,7 +2098,7 @@ class Form2 extends React.Component {
                       >
                         <input
                           style={{ width: "100%", height: "100%" }}
-                          value={other}
+                          value={values.other}
                           name='other'
                           onBlur={handleBlur}
                           onChange={event => {

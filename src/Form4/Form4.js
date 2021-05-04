@@ -936,7 +936,7 @@ class Form4 extends React.Component {
                     <div className='form-input-cont'>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={borrowingEntity}
+                          value={values.borrowingEntity}
                           // style={this.state.brokerNameEmpty ? { borderColor: 'red', } : null}
                           name='borrowingEntity'
                           onBlur={handleBlur}
@@ -956,7 +956,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={guarantorName}
+                          value={values.guarantorName}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='guarantorName'
                           onBlur={handleBlur}
@@ -976,7 +976,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={grossLoanAmount}
+                          value={values.grossLoanAmount}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='grossLoanAmount'
                           onBlur={handleBlur}
@@ -1001,7 +1001,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={facilityPurpose}
+                          value={values.facilityPurpose}
                           // style={this.state.brokerPhoneEmpty ? { borderColor: 'red', } : null}
                           name='facilityPurpose'
                           onBlur={handleBlur}
@@ -1030,7 +1030,7 @@ class Form4 extends React.Component {
                       >
                         <input
                           style={{ width: "100%" }}
-                          value={securityAddress}
+                          value={values.securityAddress}
                           // style={this.state.brokerPhoneEmpty ? { borderColor: 'red', } : null}
                           name='securityAddress'
                           onBlur={handleBlur}
@@ -1055,7 +1055,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={interestRate}
+                          value={values.interestRate}
                           // style={this.state.brokerNameEmpty ? { borderColor: 'red', } : null}
                           name='interestRate'
                           onBlur={handleBlur}
@@ -1080,7 +1080,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={facilityTerm}
+                          value={values.facilityTerm}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='facilityTerm'
                           onBlur={handleBlur}
@@ -1105,7 +1105,7 @@ class Form4 extends React.Component {
                       </label>
                       <label className='pure-material-textfield-outlined'>
                         <input
-                          value={brokerageFee}
+                          value={values.brokerageFee}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='brokerageFee'
                           onBlur={handleBlur}
@@ -1133,7 +1133,7 @@ class Form4 extends React.Component {
                         className='pure-material-textfield-outlined'
                       >
                         <input
-                          value={legalCost}
+                          value={values.legalCost}
                           // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                           name='legalCost'
                           onBlur={handleBlur}
@@ -1176,7 +1176,7 @@ class Form4 extends React.Component {
                         type='number'
                         min='0'
                         style={{ width: "100%" }}
-                        value={fees}
+                        value={values.fees}
                         // style={this.state.brokerPhoneEmpty ? { borderColor: 'red', } : null}
                         name='fees'
                         onBlur={handleBlur}
@@ -1253,7 +1253,7 @@ class Form4 extends React.Component {
                   >
                     <label className='pure-material-textfield-outlined'>
                       <input
-                        value={date}
+                        value={values.date}
                         style={{ width: "100%" }}
                         type='date'
                         // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
@@ -1274,7 +1274,7 @@ class Form4 extends React.Component {
 
                     <label className='pure-material-textfield-outlined'>
                       <input
-                        value={name}
+                        value={values.name}
                         style={{ width: "100%" }}
                         // style={this.state.brokerEmailEmpty ? { borderColor: 'red', } : null}
                         name='name'
